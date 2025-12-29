@@ -8,8 +8,6 @@ const Footer: React.FC = () => {
 
   // Refs for animations
   const footerRef = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -19,28 +17,6 @@ const Footer: React.FC = () => {
 
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
-
-      // 1. Parallax Image
-      if (imageRef.current) {
-        const rect = imageRef.current.parentElement?.getBoundingClientRect();
-        if (rect && rect.top < windowHeight && rect.bottom > 0) {
-          // Calculate movement based on scroll position relative to viewport center
-          // Moving the image slightly against the scroll direction
-          const speed = 0.15;
-          const offset = (rect.top - windowHeight / 2) * speed;
-          imageRef.current.style.transform = `translateY(${offset}px) scale(1.15)`;
-        }
-      }
-
-      // 2. Text Reveal
-      if (textRef.current) {
-        const rect = textRef.current.getBoundingClientRect();
-        // Reveal when the top of the text is in the lower 85% of the screen
-        if (rect.top < windowHeight * 0.85) {
-          textRef.current.style.opacity = '1';
-          textRef.current.style.transform = 'translateY(0)';
-        }
-      }
 
       // 3. Big Title Entrance (Staggered Character Reveal)
       if (titleRef.current) {
@@ -139,37 +115,6 @@ const Footer: React.FC = () => {
         </div>
       )}
 
-      {/* Grid Layout for Mission */}
-      <div className="grid grid-cols-1 md:grid-cols-2 border-t-2 border-black">
-        {/* Left: Image with Parallax */}
-        <div className="relative h-[50vh] md:h-[80vh] border-r-2 border-black overflow-hidden">
-          <img
-            ref={imageRef}
-            src="https://picsum.photos/800/1200?grayscale"
-            alt="Portrait"
-            className="w-full h-full object-cover transition-transform duration-75 ease-linear will-change-transform"
-            style={{ transform: 'scale(1.15)' }} // Initial scale to allow movement
-          />
-          <div className="absolute bottom-0 left-0 bg-black text-white px-4 py-1 font-bold uppercase text-sm z-10">
-            Mission
-          </div>
-          <div className="absolute top-0 left-0 bg-black text-white px-4 py-1 font-bold uppercase text-sm z-10">
-            Book A Mentorship Session
-          </div>
-        </div>
-
-        {/* Right: Text with Reveal Animation */}
-        <div className="h-full flex flex-col justify-end p-4 md:p-8 overflow-hidden">
-          <div
-            ref={textRef}
-            className="mt-auto transition-all duration-1000 ease-out opacity-0 translate-y-20"
-          >
-            <p className="font-bold text-lg md:text-2xl uppercase leading-tight tracking-tight text-right md:text-left">
-              My mission started with one simple hope: To help just one person, thinking that if I could save even a single developer from the struggles I faced, it would all be worth it. Then the messages began to arrive—people saying I changed their lives, helped them get their first client, or finally believe in themselves.
-            </p>
-          </div>
-        </div>
-      </div>
 
       {/* Marquee Banner */}
       <div
