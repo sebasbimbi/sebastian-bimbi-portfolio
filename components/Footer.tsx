@@ -68,7 +68,9 @@ const Footer: React.FC = () => {
     };
   }, []);
 
-  const titleText = "SEBASTIAN BIMBI © 25";
+  const currentYear = new Date().getFullYear();
+  const yearDisplay = currentYear.toString().slice(-2);
+  const titleText = `SEBASTIAN BIMBI © ${yearDisplay}`;
 
   return (
     <footer id="contact" ref={footerRef} className="w-full bg-white text-black">

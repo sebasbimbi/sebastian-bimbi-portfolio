@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 export interface Partnership {
     company: string;
@@ -47,11 +48,13 @@ const Partnerships: React.FC<PartnershipsProps> = ({ partnerships }) => {
             `}
                     >
                         {/* Logo */}
-                        <div className={`w-16 h-16 mb-4 flex items-center justify-center overflow-hidden rounded-lg ${hoveredIndex === idx ? 'bg-gray-100' : 'bg-white'}`}>
-                            <img
+                        <div className={`relative w-16 h-16 mb-4 flex items-center justify-center overflow-hidden rounded-lg ${hoveredIndex === idx ? 'bg-gray-100' : 'bg-white'}`}>
+                            <Image
                                 src={partnership.logo}
                                 alt={`${partnership.company} logo`}
-                                className="w-full h-full object-cover"
+                                fill
+                                className="object-cover"
+                                sizes="64px"
                             />
                         </div>
 
