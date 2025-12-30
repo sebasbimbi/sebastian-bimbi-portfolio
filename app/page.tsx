@@ -4,6 +4,8 @@ import Story from '@/components/Story';
 import Founded from '@/components/Founded';
 import Lists from '@/components/Lists';
 import Testimonials, { Testimonial } from '@/components/Testimonials';
+import Partnerships, { Partnership } from '@/components/Partnerships';
+import WorkWithMe, { Package } from '@/components/WorkWithMe';
 import Footer from '@/components/Footer';
 import AiAssistant from '@/components/AiAssistant';
 import { Award, Project } from '@/lib/types';
@@ -64,6 +66,97 @@ const awardsData: Award[] = [
     { title: "GSAP Community Challenge - Chronohop", organization: "Webflow", year: "2025", url: "https://webflow.com/community/webflow-challenge" },
 ];
 
+const partnershipsData: Partnership[] = [
+    {
+        company: "Webflow",
+        logo: "/webflow_inc__logo.jpeg",
+        type: "Sponsored Post",
+        description: "Created a carousel post about 'Webflow Frameworks'.",
+        impressions: 13600,
+        url: "https://www.linkedin.com/posts/webflow-inc-_webflow-frameworks-activity-7163547515496087553-xm-x"
+    },
+    {
+        company: "Webflow",
+        logo: "/webflow_inc__logo.jpeg",
+        type: "Sponsored Post",
+        description: "Created a carousel post about 'How to become a Webflow Pro from Scratch'.",
+        impressions: 8440,
+        url: "https://www.linkedin.com/posts/webflow-inc-_webflow-pro-activity-7131349370511208448-L5pc"
+    },
+    {
+        company: "Webflow",
+        logo: "/webflow_inc__logo.jpeg",
+        type: "Promoted Post",
+        description: "Won Webflow Awards - Community MVP 2025.",
+        impressions: 19880,
+        url: "https://www.linkedin.com/posts/webflow-inc-_the-votes-are-in-activity-7373385165777268737-g5od"
+    },
+    {
+        company: "Softr",
+        logo: "/softr_logo.jpeg",
+        type: "Sponsored Post",
+        description: "Showcasing 'Ask Softr AI' campaign.",
+        impressions: 1728,
+        url: "https://www.linkedin.com/posts/sebasbimbi_asksoftrai-nocode-activity-7356575128832372736-butW"
+    },
+    {
+        company: "Softr",
+        logo: "/softr_logo.jpeg",
+        type: "Sponsored Post",
+        description: "Showcasing 'Softr Databases' campaign.",
+        impressions: 5682,
+        url: "https://www.linkedin.com/posts/sebasbimbi_softrdatabases-nocode-activity-7341050868961619968-WfvS"
+    },
+    {
+        company: "Softr",
+        logo: "/softr_logo.jpeg",
+        type: "Sponsored Post",
+        description: "Showcasing 'Softr AI Agents' campaign.",
+        impressions: 2439,
+        url: "https://www.linkedin.com/posts/sebasbimbi_softraiagents-activity-7379088404426227712-xGwE"
+    },
+    {
+        company: "Weglot",
+        logo: "/weglot_logo.jpeg",
+        type: "Sponsored Post",
+        description: "Sponsored post sharing discount codes to the people who engaged.",
+        impressions: 1900,
+        url: "https://www.linkedin.com/posts/sebasbimbi_want-to-see-how-i-implement-website-translations-activity-7256903844125724673-lc7G"
+    },
+    {
+        company: "Weglot",
+        logo: "/weglot_logo.jpeg",
+        type: "Content Creation",
+        description: "How to quick install Weglot into Webflow.",
+        impressions: 1830,
+        url: "https://www.linkedin.com/posts/sebasbimbi_heres-how-i-supercharged-a-clients-global-activity-7253649894555488256-JV0R"
+    },
+    {
+        company: "Notion",
+        logo: "/notionhq_logo.jpeg",
+        type: "Content Creation",
+        description: "Showcasing 'Notion AI Agent'.",
+        impressions: 11809,
+        url: "https://www.linkedin.com/posts/sebasbimbi_i-just-replaced-my-entire-content-team-with-activity-7370024460239937536-RVg3"
+    },
+];
+
+const packagesData: Package[] = [
+    {
+        title: "Sponsored Post",
+        description: "A LinkedIn static post with text/image or video, promoting your brand and chosen angle/message. Written to drive maximum engagement and reach.",
+        price: "$750",
+        buttonText: "Book Now",
+        buttonUrl: "https://cal.com/sebasbimbi/collaboration"
+    },
+    {
+        title: "Series of Posts",
+        description: "A mini-series of 3x LinkedIn static posts with text/image or video, promoting your brand and chosen angle/message. Written to drive maximum engagement and reach.",
+        price: "$1,500",
+        buttonText: "Book 3x Posts",
+        buttonUrl: "https://cal.com/sebasbimbi/collaboration"
+    },
+];
 const projectsData: Project[] = [
     {
         name: "DSU",
@@ -128,6 +221,8 @@ export default function Home() {
                 <Lists title="Honors and Recognition" items={awardsData} id="awards" />
                 <Lists title="Selected Projects" items={projectsData} />
                 <Testimonials testimonials={testimonialsData} />
+                <Partnerships partnerships={partnershipsData} />
+                <WorkWithMe packages={packagesData} />
                 <Footer />
             </main>
             <AiAssistant />
