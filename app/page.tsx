@@ -152,7 +152,7 @@ const packagesData: Package[] = [
     {
         title: "Series of Posts",
         description: "A mini-series of 3x LinkedIn static posts with text/image or video, promoting your brand and chosen angle/message. Written to drive maximum engagement and reach.",
-        price: "$1,500",
+        price: "$1500",
         buttonText: "Book 3x Posts",
         buttonUrl: "https://cal.com/sebasbimbi/collaboration"
     },
