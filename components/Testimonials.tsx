@@ -1,10 +1,7 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import React, { useState } from 'react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export interface Testimonial {
     quote: string;
@@ -23,38 +20,9 @@ interface TestimonialsProps {
 const Testimonials: React.FC<TestimonialsProps> = ({ recommendations, menteeTestimonials }) => {
     const [activeTab, setActiveTab] = useState<'recommendations' | 'mentee'>('recommendations');
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useScrollReveal<HTMLDivElement>({ staggerDelay: 80 });
 
     const activeList = activeTab === 'recommendations' ? recommendations : menteeTestimonials;
-
-    useEffect(() => {
-        let ctx = gsap.context(() => {
-            if (containerRef.current) {
-                // Ensure initial visibility state before animation
-                gsap.set(containerRef.current.children, { autoAlpha: 0, y: '20%' });
-
-                gsap.fromTo(containerRef.current.children,
-                    {
-                        y: '20%',
-                        autoAlpha: 0
-                    },
-                    {
-                        y: '0%',
-                        autoAlpha: 1,
-                        duration: 0.5,
-                        stagger: 0.1,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: containerRef.current,
-                            start: 'top 85%',
-                        }
-                    }
-                );
-            }
-        }, containerRef);
-
-        return () => ctx.revert();
-    }, [activeTab]);
 
     return (
         <section className="w-full bg-white text-black py-16 md:py-24 px-4 md:px-8">

@@ -2,10 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 export interface PartnershipPost {
     type: string;
@@ -29,7 +26,7 @@ interface PartnershipsProps {
 const Partnerships: React.FC<PartnershipsProps> = ({ partnerships }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
     const [selectedPartnership, setSelectedPartnership] = useState<Partnership | null>(null);
-    const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useScrollReveal<HTMLDivElement>({ staggerDelay: 100 });
     const modalRef = useRef<HTMLDivElement>(null);
 
     const formatImpressions = (num: number) => {
@@ -80,34 +77,6 @@ const Partnerships: React.FC<PartnershipsProps> = ({ partnerships }) => {
             document.body.style.overflow = '';
         };
     }, [selectedPartnership]);
-
-    useEffect(() => {
-        let ctx = gsap.context(() => {
-            if (containerRef.current) {
-                gsap.set(containerRef.current.children, { autoAlpha: 0, y: '20%' });
-
-                gsap.fromTo(containerRef.current.children,
-                    {
-                        y: '20%',
-                        autoAlpha: 0
-                    },
-                    {
-                        y: '0%',
-                        autoAlpha: 1,
-                        duration: 0.5,
-                        stagger: 0.1,
-                        ease: 'power2.out',
-                        scrollTrigger: {
-                            trigger: containerRef.current,
-                            start: 'top 85%',
-                        }
-                    }
-                );
-            }
-        }, containerRef);
-
-        return () => ctx.revert();
-    }, []);
 
     return (
         <section className="w-full bg-black text-white py-16 md:py-24 px-4 md:px-8">

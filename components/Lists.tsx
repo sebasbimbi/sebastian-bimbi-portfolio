@@ -1,12 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 import { Award, Project } from '@/lib/types';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useMousePosition } from '@/hooks/useMousePosition';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 interface ListProps {
   title: string;
@@ -15,47 +12,9 @@ interface ListProps {
 }
 
 const Lists: React.FC<ListProps> = ({ title, items, id }) => {
-  const router = useRouter();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  useEffect(() => {
-    let ctx = gsap.context(() => {
-      if (containerRef.current) {
-        gsap.set(containerRef.current.children, { autoAlpha: 0, y: '20%' });
-
-        gsap.fromTo(containerRef.current.children,
-          {
-            y: '20%',
-            autoAlpha: 0
-          },
-          {
-            y: '0%',
-            autoAlpha: 1,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: containerRef.current,
-              start: 'top 85%',
-            }
-          }
-        );
-      }
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+  const mousePos = useMousePosition();
+  const containerRef = useScrollReveal<HTMLDivElement>({ staggerDelay: 50 });
 
   const hoveredItem = hoveredIndex !== null ? items[hoveredIndex] : null;
   const showPopup = hoveredItem && ('video' in hoveredItem || 'image' in hoveredItem || 'link' in hoveredItem) && (('video' in hoveredItem && hoveredItem.video) || ('image' in hoveredItem && hoveredItem.image) || ('link' in hoveredItem && hoveredItem.link));
@@ -167,12 +126,8 @@ const Lists: React.FC<ListProps> = ({ title, items, id }) => {
       <div ref={containerRef} className="flex flex-col">
         {items.map((item, idx) => {
           const handleClick = () => {
-            // If it's a Project, navigate to case study page
-            if ('slug' in item) {
-              router.push(`/case-studies/${item.slug}`);
-            }
             // If it's an Award with a URL, open in new tab
-            else if ('url' in item && item.url) {
+            if ('url' in item && item.url) {
               window.open(item.url, '_blank', 'noopener,noreferrer');
             }
           };
@@ -183,7 +138,7 @@ const Lists: React.FC<ListProps> = ({ title, items, id }) => {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={handleClick}
-              className="w-full border-b-2 border-black py-3 md:py-5 flex flex-row items-center justify-between hover:bg-black hover:text-white transition-all duration-300 cursor-pointer group px-2 gap-4 relative overflow-hidden opacity-0"
+              className="w-full border-b-2 border-black py-3 md:py-5 flex flex-row items-center justify-between hover:bg-black hover:text-white transition-colors duration-300 cursor-pointer group px-2 gap-4 relative overflow-hidden"
             >
               <div className="flex items-center relative flex-1 overflow-hidden h-full">
                 {/* Arrow Flourish */}
