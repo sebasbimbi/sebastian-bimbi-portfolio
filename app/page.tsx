@@ -143,104 +143,145 @@ const awardsData: Award[] = [
 
 const partnershipsData: Partnership[] = [
     {
-        company: "Turbotic",
-        logo: "/turbotic_logo.jpeg",
-        type: "Sponsored Post",
-        description: "Created a video showcasing their automation platform.",
-        impressions: 24300,
-        likes: 100,
-        url: "https://www.linkedin.com/posts/sebasbimbi_nocode-turbotic-ai-activity-7408791306803519488-7CHA"
-    },
-    {
-        company: "Anthropic",
-        logo: "/anthropicresearch_logo.jpeg",
-        type: "Promoted Post",
-        description: "Showcasing free Claude for Business.",
-        impressions: 1500,
-        likes: 60,
-        url: "https://www.linkedin.com/posts/sebasbimbi_i-cant-afford-these-tools-anymore-my-activity-7389536923419058176-5NQ9"
-    },
-    {
-        company: "Webflow",
-        logo: "/webflow_inc__logo.jpeg",
-        type: "Sponsored Post",
-        description: "Created a carousel post about 'Webflow Frameworks'.",
-        impressions: 13600,
-        likes: 230,
-        url: "https://www.linkedin.com/posts/webflow-inc-_webflow-frameworks-activity-7163547515496087553-xm-x"
-    },
-    {
-        company: "Webflow",
-        logo: "/webflow_inc__logo.jpeg",
-        type: "Sponsored Post",
-        description: "Created a carousel post about 'How to become a Webflow Pro from Scratch'.",
-        impressions: 8440,
-        likes: 170,
-        url: "https://www.linkedin.com/posts/webflow-inc-_webflow-pro-activity-7131349370511208448-L5pc"
-    },
-    {
-        company: "Webflow",
-        logo: "/webflow_inc__logo.jpeg",
-        type: "Promoted Post",
-        description: "Won Webflow Awards - Community MVP 2025.",
-        impressions: 19880,
-        likes: 310,
-        url: "https://www.linkedin.com/posts/webflow-inc-_the-votes-are-in-activity-7373385165777268737-g5od"
-    },
-    {
-        company: "Softr",
-        logo: "/softr_logo.jpeg",
-        type: "Sponsored Post",
-        description: "Showcasing 'Ask Softr AI' campaign.",
-        impressions: 1728,
-        likes: 60,
-        url: "https://www.linkedin.com/posts/sebasbimbi_asksoftrai-nocode-activity-7356575128832372736-butW"
-    },
-    {
-        company: "Softr",
-        logo: "/softr_logo.jpeg",
-        type: "Sponsored Post",
-        description: "Showcasing 'Softr Databases' campaign.",
-        impressions: 5682,
-        likes: 90,
-        url: "https://www.linkedin.com/posts/sebasbimbi_softrdatabases-nocode-activity-7341050868961619968-WfvS"
-    },
-    {
-        company: "Softr",
-        logo: "/softr_logo.jpeg",
-        type: "Sponsored Post",
-        description: "Showcasing 'Softr AI Agents' campaign.",
-        impressions: 2439,
-        likes: 50,
-        url: "https://www.linkedin.com/posts/sebasbimbi_softraiagents-activity-7379088404426227712-xGwE"
-    },
-    {
         company: "Weglot",
         logo: "/weglot_logo.jpeg",
-        type: "Sponsored Post",
-        description: "Sponsored post sharing discount codes to the people who engaged.",
-        impressions: 1900,
-        likes: 50,
-        url: "https://www.linkedin.com/posts/sebasbimbi_want-to-see-how-i-implement-website-translations-activity-7256903844125724673-lc7G"
-    },
-    {
-        company: "Weglot",
-        logo: "/weglot_logo.jpeg",
-        type: "Content Creation",
-        description: "How to quick install Weglot into Webflow.",
-        impressions: 1830,
-        likes: 35,
-        url: "https://www.linkedin.com/posts/sebasbimbi_heres-how-i-supercharged-a-clients-global-activity-7253649894555488256-JV0R"
+        posts: [
+            {
+                type: "Sponsored Post",
+                description: "Sponsored post sharing discount codes to the people who engaged.",
+                impressions: 1900,
+                likes: 50,
+                url: "https://www.linkedin.com/posts/sebasbimbi_want-to-see-how-i-implement-website-translations-activity-7256903844125724673-lc7G"
+            },
+            {
+                type: "Content Creation",
+                description: "How to quick install Weglot into Webflow.",
+                impressions: 1830,
+                likes: 35,
+                url: "https://www.linkedin.com/posts/sebasbimbi_heres-how-i-supercharged-a-clients-global-activity-7253649894555488256-JV0R"
+            }
+        ]
     },
     {
         company: "Notion",
         logo: "/notionhq_logo.jpeg",
-        type: "Content Creation",
-        description: "Showcasing 'Notion AI Agent'.",
-        impressions: 11809,
-        likes: 110,
-        url: "https://www.linkedin.com/posts/sebasbimbi_i-just-replaced-my-entire-content-team-with-activity-7370024460239937536-RVg3"
+        posts: [
+            {
+                type: "Content Creation",
+                description: "Showcasing 'Notion AI Agent'.",
+                impressions: 11809,
+                likes: 110,
+                url: "https://www.linkedin.com/posts/sebasbimbi_i-just-replaced-my-entire-content-team-with-activity-7370024460239937536-RVg3"
+            }
+        ]
     },
+    {
+        company: "Anthropic",
+        logo: "/anthropicresearch_logo.jpeg",
+        posts: [
+            {
+                type: "Promoted Post",
+                description: "Showcasing free Claude for Business.",
+                impressions: 1500,
+                likes: 60,
+                url: "https://www.linkedin.com/posts/sebasbimbi_i-cant-afford-these-tools-anymore-my-activity-7389536923419058176-5NQ9"
+            }
+        ]
+    },
+    {
+        company: "Turbotic",
+        logo: "/turbotic_logo.jpeg",
+        posts: [
+            {
+                type: "Sponsored Post",
+                description: "Created a video showcasing their automation platform.",
+                impressions: 24300,
+                likes: 100,
+                url: "https://www.linkedin.com/posts/sebasbimbi_nocode-turbotic-ai-activity-7408791306803519488-7CHA"
+            }
+        ]
+    },
+    {
+        company: "Softr",
+        logo: "/softr_logo.jpeg",
+        posts: [
+            {
+                type: "Sponsored Post",
+                description: "Showcasing 'Ask Softr AI' campaign.",
+                impressions: 1728,
+                likes: 60,
+                url: "https://www.linkedin.com/posts/sebasbimbi_asksoftrai-nocode-activity-7356575128832372736-butW",
+                campaign: ""
+            },
+            {
+                type: "Sponsored Post",
+                description: "Showcasing 'Softr Databases' campaign.",
+                impressions: 5682,
+                likes: 90,
+                url: "https://www.linkedin.com/posts/sebasbimbi_softrdatabases-nocode-activity-7341050868961619968-WfvS",
+                campaign: ""
+            },
+            {
+                type: "Sponsored Post",
+                description: "Showcasing 'Softr AI Agents' campaign.",
+                impressions: 2439,
+                likes: 50,
+                url: "https://www.linkedin.com/posts/sebasbimbi_softraiagents-activity-7379088404426227712-xGwE",
+                campaign: ""
+            },
+            {
+                type: "Sponsored Post",
+                description: "Created a video showcasing Softr Workflows.",
+                impressions: 1700,
+                likes: 55,
+                url: "https://www.linkedin.com/posts/sebasbimbi_softrworkflows-nocode-automation-activity-7392168153910509568-SuwG/",
+                campaign: "Workflows"
+            },
+            {
+                type: "Sponsored Post",
+                description: "Created a video showcasing Softr Workflows.",
+                impressions: 1900,
+                likes: 60,
+                url: "https://www.linkedin.com/posts/sebasbimbi_softrworkflows-activity-7387037520305340416-baNI/",
+                campaign: "Workflows"
+            },
+            {
+                type: "Sponsored Post",
+                description: "Created a video showcasing Softr Workflows.",
+                impressions: 2100,
+                likes: 60,
+                url: "https://www.linkedin.com/posts/sebasbimbi_softrworkflows-activity-7389953895000596480-1uaQ/",
+                campaign: "Workflows"
+            }
+        ]
+    },
+    {
+        company: "Webflow",
+        logo: "/webflow_inc__logo.jpeg",
+        posts: [
+            {
+                type: "Sponsored Post",
+                description: "Created a carousel post about 'Webflow Frameworks'.",
+                impressions: 13600,
+                likes: 230,
+                url: "https://www.linkedin.com/posts/webflow-inc-_webflow-frameworks-activity-7163547515496087553-xm-x"
+            },
+            {
+                type: "Sponsored Post",
+                description: "Created a carousel post about 'How to become a Webflow Pro from Scratch'.",
+                impressions: 8440,
+                likes: 170,
+                url: "https://www.linkedin.com/posts/webflow-inc-_webflow-pro-activity-7131349370511208448-L5pc"
+            },
+            {
+                type: "Promoted Post",
+                description: "Won Webflow Awards - Community MVP 2025.",
+                impressions: 19880,
+                likes: 310,
+                url: "https://www.linkedin.com/posts/webflow-inc-_the-votes-are-in-activity-7373385165777268737-g5od"
+            }
+        ]
+    }
 ];
 
 const ambassadorData: AmbassadorRole[] = [
