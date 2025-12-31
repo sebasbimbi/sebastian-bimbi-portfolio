@@ -1,6 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export interface Testimonial {
     quote: string;
@@ -8,34 +12,87 @@ export interface Testimonial {
     role: string;
     company: string;
     url?: string;
+    year?: string;
 }
 
 interface TestimonialsProps {
-    testimonials: Testimonial[];
+    recommendations: Testimonial[];
+    menteeTestimonials: Testimonial[];
 }
 
-const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
+const Testimonials: React.FC<TestimonialsProps> = ({ recommendations, menteeTestimonials }) => {
+    const [activeTab, setActiveTab] = useState<'recommendations' | 'mentee'>('recommendations');
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    const activeList = activeTab === 'recommendations' ? recommendations : menteeTestimonials;
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            if (containerRef.current) {
+                // Ensure initial visibility state before animation
+                gsap.set(containerRef.current.children, { autoAlpha: 0, y: '20%' });
+
+                gsap.fromTo(containerRef.current.children,
+                    {
+                        y: '20%',
+                        autoAlpha: 0
+                    },
+                    {
+                        y: '0%',
+                        autoAlpha: 1,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: containerRef.current,
+                            start: 'top 85%',
+                        }
+                    }
+                );
+            }
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, [activeTab]);
 
     return (
         <section className="w-full bg-white text-black py-16 md:py-24 px-4 md:px-8">
-            <div className="mb-12 flex justify-center">
+            <div className="mb-12 flex flex-col items-center justify-center gap-6">
                 <div className="border-2 border-black rounded-[50%] px-10 py-3 font-bold text-xl md:text-2xl uppercase tracking-tighter">
                     Testimonials
                 </div>
+
+                <div className="flex gap-2 p-1 bg-gray-100 rounded-full">
+                    <button
+                        onClick={() => setActiveTab('recommendations')}
+                        className={`px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === 'recommendations'
+                            ? 'bg-black text-white shadow-lg'
+                            : 'text-gray-500 hover:text-black'
+                            }`}
+                    >
+                        Recommendations
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('mentee')}
+                        className={`px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-all duration-300 ${activeTab === 'mentee'
+                            ? 'bg-black text-white shadow-lg'
+                            : 'text-gray-500 hover:text-black'
+                            }`}
+                    >
+                        Mentee Testimonials
+                    </button>
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {testimonials.map((testimonial, idx) => (
-                    <a
+            <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {activeList.map((testimonial, idx) => (
+                    <div
                         key={idx}
-                        href={testimonial.url || '#'}
-                        target={testimonial.url ? '_blank' : undefined}
-                        rel={testimonial.url ? 'noopener noreferrer' : undefined}
                         onMouseEnter={() => setHoveredIndex(idx)}
                         onMouseLeave={() => setHoveredIndex(null)}
                         className={`
-              group relative border-2 border-black p-6 transition-all duration-300 cursor-pointer
+              group relative border-2 border-black p-6 transition-all duration-300 flex flex-col justify-between h-full opacity-0
               ${hoveredIndex === idx ? 'bg-black text-white' : 'bg-white text-black'}
               ${hoveredIndex !== null && hoveredIndex !== idx ? 'opacity-50' : 'opacity-100'}
               hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]
@@ -62,13 +119,15 @@ const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => {
                             <p className={`text-xs uppercase tracking-widest ${hoveredIndex === idx ? 'text-gray-400' : 'text-gray-400'}`}>
                                 {testimonial.company}
                             </p>
-                        </div>
 
-                        {/* Arrow indicator on hover */}
-                        <div className={`absolute top-4 right-4 text-lg transform transition-all duration-300 ${hoveredIndex === idx ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-2'}`}>
-                            ↗
+                            {/* Year */}
+                            {testimonial.year && (
+                                <p className={`text-xs uppercase tracking-widest mt-1 ${hoveredIndex === idx ? 'text-gray-400' : 'text-gray-400'}`}>
+                                    {testimonial.year}
+                                </p>
+                            )}
                         </div>
-                    </a>
+                    </div>
                 ))}
             </div>
         </section>

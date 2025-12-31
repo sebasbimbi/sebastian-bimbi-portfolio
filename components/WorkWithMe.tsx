@@ -1,6 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export interface Package {
     title: string;
@@ -16,6 +20,35 @@ interface WorkWithMeProps {
 
 const WorkWithMe: React.FC<WorkWithMeProps> = ({ packages }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            if (containerRef.current) {
+                gsap.set(containerRef.current.children, { autoAlpha: 0, y: '20%' });
+
+                gsap.fromTo(containerRef.current.children,
+                    {
+                        y: '20%',
+                        autoAlpha: 0
+                    },
+                    {
+                        y: '0%',
+                        autoAlpha: 1,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: containerRef.current,
+                            start: 'top 85%',
+                        }
+                    }
+                );
+            }
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
         <section className="w-full bg-white text-black py-16 md:py-24 px-4 md:px-8">
@@ -25,14 +58,14 @@ const WorkWithMe: React.FC<WorkWithMeProps> = ({ packages }) => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 {packages.map((pkg, idx) => (
                     <div
                         key={idx}
                         onMouseEnter={() => setHoveredIndex(idx)}
                         onMouseLeave={() => setHoveredIndex(null)}
                         className={`
-              group relative border-2 border-black p-8 transition-all duration-300 flex flex-col
+              group relative border-2 border-black p-8 transition-all duration-300 flex flex-col opacity-0
               ${hoveredIndex === idx ? 'bg-black text-white' : 'bg-white text-black'}
               ${hoveredIndex !== null && hoveredIndex !== idx ? 'opacity-50' : 'opacity-100'}
               hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]

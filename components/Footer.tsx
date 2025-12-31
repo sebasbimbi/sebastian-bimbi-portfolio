@@ -1,20 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const Footer: React.FC = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
   // Refs for animations
   const footerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    };
-
     const handleScroll = () => {
       const windowHeight = window.innerHeight;
 
@@ -56,14 +49,12 @@ const Footer: React.FC = () => {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('scroll', handleScroll);
 
     // Initial triggering to set positions
     handleScroll();
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -74,68 +65,6 @@ const Footer: React.FC = () => {
 
   return (
     <footer id="contact" ref={footerRef} className="w-full bg-white text-black">
-      <style>
-        {`
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
-          }
-          .animate-marquee {
-            animation: marquee 15s linear infinite;
-          }
-          /* Pause animation when the parent group is hovered */
-          .group:hover .animate-marquee {
-            animation-play-state: paused;
-          }
-          @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          .animate-spin-slow {
-            animation: spin-slow 6s linear infinite;
-          }
-        `}
-      </style>
-
-      {/* Floating Sticker Popup */}
-      {isHovered && (
-        <div
-          className="fixed z-50 pointer-events-none mix-blend-difference"
-          style={{
-            left: mousePos.x,
-            top: mousePos.y,
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          <div className="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center animate-spin-slow relative">
-            <div className="absolute inset-1 border-2 border-dashed border-black rounded-full"></div>
-            <div className="text-center transform -rotate-12">
-              <p className="font-display font-black text-black text-2xl md:text-3xl leading-none">PDF</p>
-              <p className="font-bold text-black text-[10px] uppercase tracking-wider">Download</p>
-            </div>
-          </div>
-        </div>
-      )}
-
-
-      {/* Marquee Banner */}
-      <div
-        className="w-full bg-black text-white py-4 md:py-8 overflow-hidden border-y-2 border-white flex group cursor-pointer relative"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {/* First copy of content */}
-        <div className="animate-marquee whitespace-nowrap flex shrink-0 items-center">
-          <span className="font-display text-4xl md:text-8xl uppercase tracking-tighter mx-6 md:mx-12 group-hover:opacity-50 transition-opacity duration-300">Download A Full PDF (Who I'm)</span>
-          <span className="font-display text-4xl md:text-8xl uppercase tracking-tighter mx-6 md:mx-12 group-hover:opacity-50 transition-opacity duration-300">Download A Full PDF (Who I'm)</span>
-        </div>
-        {/* Second copy of content for seamless loop */}
-        <div className="animate-marquee whitespace-nowrap flex shrink-0 items-center">
-          <span className="font-display text-4xl md:text-8xl uppercase tracking-tighter mx-6 md:mx-12 group-hover:opacity-50 transition-opacity duration-300">Download A Full PDF (Who I'm)</span>
-          <span className="font-display text-4xl md:text-8xl uppercase tracking-tighter mx-6 md:mx-12 group-hover:opacity-50 transition-opacity duration-300">Download A Full PDF (Who I'm)</span>
-        </div>
-      </div>
-
       {/* Links Footer */}
       <div className="w-full bg-black text-white px-4 md:px-8 pt-10 pb-32 md:pb-40 flex flex-col md:flex-row justify-between items-start md:items-center text-[10px] md:text-xs uppercase tracking-widest gap-6 md:gap-0">
         <div className="flex gap-2">
@@ -145,17 +74,17 @@ const Footer: React.FC = () => {
 
         <div className="flex gap-2">
           <span className="font-bold text-white">TikTok</span>
-          <a href="#" className="text-gray-500 italic hover:text-white transition-all duration-300 hover:scale-105 origin-left inline-block">(1.5M+ Followers)</a>
+          <a href="https://www.tiktok.com/@sebasbimbi" target="_blank" rel="noopener noreferrer" className="text-gray-500 italic hover:text-white transition-all duration-300 hover:scale-105 origin-left inline-block">(1.5M+ Followers)</a>
         </div>
 
         <div className="flex gap-2">
           <span className="font-bold text-white">LinkedIn</span>
-          <a href="#" className="text-gray-500 italic hover:text-white transition-all duration-300 hover:scale-105 origin-left inline-block">(10K+ Followers)</a>
+          <a href="https://www.linkedin.com/in/sebasbimbi/" target="_blank" rel="noopener noreferrer" className="text-gray-500 italic hover:text-white transition-all duration-300 hover:scale-105 origin-left inline-block">(11K+ Followers)</a>
         </div>
 
         <div className="flex gap-2">
           <span className="font-bold text-white">By</span>
-          <span className="text-gray-500 italic">HK©</span>
+          <a href="https://www.hasnainkhagan.com/" target="_blank" rel="noopener noreferrer" className="text-gray-500 italic hover:text-white transition-all duration-300 hover:scale-105 origin-left inline-block">HK©</a>
         </div>
       </div>
 

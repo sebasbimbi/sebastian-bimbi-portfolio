@@ -1,8 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Award, Project } from '@/lib/types';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ListProps {
   title: string;
@@ -14,6 +18,7 @@ const Lists: React.FC<ListProps> = ({ title, items, id }) => {
   const router = useRouter();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -22,6 +27,34 @@ const Lists: React.FC<ListProps> = ({ title, items, id }) => {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      if (containerRef.current) {
+        gsap.set(containerRef.current.children, { autoAlpha: 0, y: '20%' });
+
+        gsap.fromTo(containerRef.current.children,
+          {
+            y: '20%',
+            autoAlpha: 0
+          },
+          {
+            y: '0%',
+            autoAlpha: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: containerRef.current,
+              start: 'top 85%',
+            }
+          }
+        );
+      }
+    }, containerRef);
+
+    return () => ctx.revert();
   }, []);
 
   const hoveredItem = hoveredIndex !== null ? items[hoveredIndex] : null;
@@ -130,7 +163,7 @@ const Lists: React.FC<ListProps> = ({ title, items, id }) => {
         <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest">({items.length})</span>
       </div>
 
-      <div className="flex flex-col">
+      <div ref={containerRef} className="flex flex-col">
         {items.map((item, idx) => {
           const handleClick = () => {
             // If it's a Project, navigate to case study page
@@ -149,7 +182,7 @@ const Lists: React.FC<ListProps> = ({ title, items, id }) => {
               onMouseEnter={() => setHoveredIndex(idx)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={handleClick}
-              className="w-full border-b-2 border-black py-3 md:py-5 flex flex-row items-center justify-between hover:bg-black hover:text-white transition-all duration-300 cursor-pointer group px-2 gap-4 relative overflow-hidden"
+              className="w-full border-b-2 border-black py-3 md:py-5 flex flex-row items-center justify-between hover:bg-black hover:text-white transition-all duration-300 cursor-pointer group px-2 gap-4 relative overflow-hidden opacity-0"
             >
               <div className="flex items-center relative flex-1 overflow-hidden h-full">
                 {/* Arrow Flourish */}

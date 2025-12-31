@@ -1,7 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export interface Partnership {
     company: string;
@@ -18,10 +22,39 @@ interface PartnershipsProps {
 
 const Partnerships: React.FC<PartnershipsProps> = ({ partnerships }) => {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const formatImpressions = (num: number) => {
         return num.toLocaleString();
     };
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            if (containerRef.current) {
+                gsap.set(containerRef.current.children, { autoAlpha: 0, y: '20%' });
+
+                gsap.fromTo(containerRef.current.children,
+                    {
+                        y: '20%',
+                        autoAlpha: 0
+                    },
+                    {
+                        y: '0%',
+                        autoAlpha: 1,
+                        duration: 0.5,
+                        stagger: 0.1,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: containerRef.current,
+                            start: 'top 85%',
+                        }
+                    }
+                );
+            }
+        }, containerRef);
+
+        return () => ctx.revert();
+    }, []);
 
     return (
         <section className="w-full bg-black text-white py-16 md:py-24 px-4 md:px-8">
@@ -31,7 +64,7 @@ const Partnerships: React.FC<PartnershipsProps> = ({ partnerships }) => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div ref={containerRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {partnerships.map((partnership, idx) => (
                     <a
                         key={idx}
@@ -41,7 +74,7 @@ const Partnerships: React.FC<PartnershipsProps> = ({ partnerships }) => {
                         onMouseEnter={() => setHoveredIndex(idx)}
                         onMouseLeave={() => setHoveredIndex(null)}
                         className={`
-              group relative border-2 border-white p-6 transition-all duration-300 cursor-pointer flex flex-col
+              group relative border-2 border-white p-6 transition-all duration-300 cursor-pointer flex flex-col opacity-0
               ${hoveredIndex === idx ? 'bg-white text-black' : 'bg-black text-white'}
               ${hoveredIndex !== null && hoveredIndex !== idx ? 'opacity-50' : 'opacity-100'}
               hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.3)]

@@ -6,53 +6,129 @@ import Lists from '@/components/Lists';
 import Testimonials, { Testimonial } from '@/components/Testimonials';
 import Partnerships, { Partnership } from '@/components/Partnerships';
 import WorkWithMe, { Package } from '@/components/WorkWithMe';
+import Ambassador, { AmbassadorRole } from "@/components/Ambassador";
 import Footer from '@/components/Footer';
 import AiAssistant from '@/components/AiAssistant';
 import { Award, Project } from '@/lib/types';
 
 const testimonialsData: Testimonial[] = [
     {
-        quote: "Sebastian is a Webflow Master. He went above and beyond to provide value to a fellow founder like myself to build something with quality and speed. He's humble, knowledgeable and always happy to help.",
-        name: "Ilai Szpiezak",
-        role: "Co-Founder, CEO",
-        company: "Pretty Prompt",
-        url: "https://www.linkedin.com/in/ilaiszpiezak/"
+        quote: "I needed a few quick fixes on my webflow website, and Sebastian quickly fixed them and a few other minor things while he was added. Super flexible and easy to work with. Glad I found him :)",
+        name: "Peter Sorgenfrei",
+        role: "CEO and Founder Coach",
+        company: "Sorgenfrei ApS"
     },
     {
-        quote: "Sebastian combines outstanding expertise with a rare sense of humanity and professionalism. Working with him was not only highly effective, but also truly enjoyable.",
-        name: "Riccardo Morieri",
-        role: "Managing Director",
-        company: "Morvei Solutions",
-        url: "https://www.linkedin.com/in/riccardomorieri/"
-    },
-    {
-        quote: "I highly recommend Sebastian as a dedicated mentor and expert. He played a pivotal role in my professional growth by assisting me in completing complex assignments within tight deadlines.",
+        quote: "I highly recommend Sebastian as a dedicated mentor and expert. He played a pivotal role in my professional growth by assisting me in completing complex assignments within tight deadlines. His expertise and guidance were instrumental in my success, especially during highly complex projects. Meeting Sebastian was a stroke of luck, and he has been a true lifesaver for me.",
         name: "Benedict Ryan",
         role: "Founder",
-        company: "FlowRonin",
-        url: "https://www.linkedin.com/in/benedictryan/"
+        company: "FlowRonin"
     },
     {
-        quote: "Without knowing me or looking for anything in return, Sebastian offered to jump on a call and help me resolve an issue I was having in Webflow. He spent time not only helping me come up with a solution but also providing me with very helpful suggestions.",
+        quote: "Sebastian is a Webflow Master. He went above and beyond to provide value to a fellow founder like myself to build something with quality and speed. He's humble, knowledgeable and always happy to help. I cannot recommend him enough and I hope we'll be working together again soon!",
+        name: "Ilai Szpiezak",
+        role: "Co-Founder, CEO",
+        company: "Pretty Prompt"
+    },
+    {
+        quote: "Without knowing me or looking for anything in return, Sebastian offered to jump on a call and help me resolve an issue I was having in Webflow. He spent time not only helping me come up with a solution to the problem I was facing but also providing me with very helpful suggestions on other parts of my site. Sebastian is an expert in his field and overall a person with great integrity.",
         name: "Dana Severson",
         role: "Senior Manager, SEO & Content",
-        company: "Housecall Pro",
-        url: "https://www.linkedin.com/in/danaseverson/"
+        company: "Housecall Pro"
     },
     {
-        quote: "Today's mentorship session with Sebastian truly shifted my perspective. He said something that really hit me: 'Fix yourself from your mind first. Think about the process of how to become what you want to be.'",
+        quote: "Sebastian, from a quick LinkedIn message on an early Saturday morning, immediately reached back out to me and got to troubleshoot my website that's built on webflow. In a matter of minutes, he came back to me with a solution. For him it was simple, for me it was the solution of a lifetime. I liked that he was super responsive, extremely communicative, and effective. If you're looking to troubleshoot your webflow, Sebastian is your guy.",
+        name: "Nando Rodriguez",
+        role: "Executive Leadership Coach",
+        company: "The Law Firm Of Moumita Rahman, PLLC"
+    },
+    {
+        quote: "Sebastian combines outstanding expertise with a rare sense of humanity and professionalism. Working with him was not only highly effective, but also truly enjoyable. He brings deep technical knowledge, creative problem-solving and genuine empathy to every project. His collaborative spirit and positive attitude set him apart.",
+        name: "Riccardo Morieri",
+        role: "Managing Director",
+        company: "Morvei Solutions OG"
+    },
+    {
+        quote: "Sebastian was friendly and communicative, and his work was very professional. He found innovative, creative ways to achieve what we had in mind while adjusting to our requirements. His expertise solved our web development needs.",
+        name: "Ana Palomo",
+        role: "Sales - Marketing Strategy",
+        company: "BCN Visuals"
+    },
+    {
+        quote: "Sebastian was helpful in improving our site performance, taking our load time from over 13 seconds to under 2. He also took time to share useful tips for working more efficiently in Webflow with me, which I really appreciated!",
+        name: "Angela Petrie Blum",
+        role: "Director of Digital Marketing",
+        company: "Weaver Fundraising"
+    },
+];
+
+const menteeTestimonialsData: Testimonial[] = [
+    {
+        quote: "Today's mentorship session with Sebastian Bimbi truly shifted my perspective. He said something that really hit me: 'Fix yourself from your mind first. Think about the process of how to become what you want to be, and you'll reach your goal.' He was real, no sugarcoating.",
         name: "Joseph David",
         role: "Webflow Developer",
-        company: "Freelancing",
-        url: "https://adplist.org/mentors/sebastian-bimbi"
+        company: "Freelancing"
     },
     {
-        quote: "Sebastian has extensive experience in the field and an amazing ability to share his knowledge in a clear and engaging way. I left our meeting feeling confident and ready to put his insights into practice.",
+        quote: "Sebastian has extensive experience in the field and an amazing ability to share his knowledge in a clear and engaging way. I left our meeting feeling confident and ready to put his insights into practice. His guidance not only clarified my next steps but also gave me the motivation to move forward.",
         name: "Gustavo Maia",
         role: "Student",
-        company: "Brazil",
-        url: "https://adplist.org/mentors/sebastian-bimbi"
+        company: "Brazil"
     },
+    {
+        quote: "I had an exceptional experience with Sebastian! His amazing communication and deep subject knowledge made all the difference. He took the time to understand my expertise and provided invaluable guidance on marketing myself to attract clients.",
+        name: "Karan Hamav",
+        role: "UX Designer and Webflow Developer",
+        company: "Ex-FYND"
+    },
+    {
+        quote: "I had an outstanding experience with Sebastian! Their amazing communication and subject knowledge made complex topics easy to understand. Sebastian's motivation and problem-solving skills truly inspired me to tackle my challenges head-on.",
+        name: "Aftah Pasha",
+        role: "Web Designer",
+        company: "Dicoding"
+    },
+    {
+        quote: "Sebastian was very friendly & patient, he guided me on my portfolio building & how do i build my career, would definitely love talk with him again, Thank Sebastian for taking your time!",
+        name: "Zain Ahmed",
+        role: "Webflow Developer",
+        company: "Recreav"
+    },
+    {
+        quote: "The conversation with Sebastian was very productive. I really appreciate his candor and his willingness to discuss the experiences that led to his successful career. He offered valuable guidance on the direction I should take regarding my interest in web development.",
+        name: "Sohail Hatim",
+        role: "UX Designer",
+        company: "Surgyy Design"
+    },
+    {
+        quote: "Booked a half-hour mentorship session, but he generously extended it to a full hour. He provided me with every detail and pathway to become a successful no-code developer. Sebastian is very polite and generous.",
+        name: "William Avelar",
+        role: "Product Designer",
+        company: "Just Beta"
+    },
+    {
+        quote: "I learn a lot about what I did and what I can improve on my freelancing journey.",
+        name: "Muhammad Bilal Qureshi",
+        role: "UI/UX Designer",
+        company: "Coursera"
+    },
+    {
+        quote: "Sebastian was instrumental in my Webflow development journey, providing an abundance of valuable information and resources that helped me overcome obstacles in finding clients. His amazing communication and deep subject knowledge made the session feel like a conversation with a supportive friend.",
+        name: "Maksim Kuznetsov",
+        role: "Webflow Developer",
+        company: "Self taught"
+    },
+    {
+        quote: "Sebastian's brother is a great person who helps everyone. I'm stammering a lot, but he never sees my stammering. He always sees my feelings and my intentions. He has a lot of Webflow knowledge. His guidance is very wonderful.",
+        name: "Lavi Sharma",
+        role: "Webflow Developer & Designer",
+        company: "EWPS"
+    },
+    {
+        quote: "I had an incredible session with my mentor, who exceeded my expectations in every aspect. Their amazing communication and deep subject knowledge provided me with insightful perspectives tailored to my situation. He motivated me and offered effective problem-solving strategies.",
+        name: "Kaif suthar",
+        role: "Student",
+        company: "shri B. H. Gandhi BBA college"
+    }
 ];
 
 
@@ -67,6 +143,22 @@ const awardsData: Award[] = [
 ];
 
 const partnershipsData: Partnership[] = [
+    {
+        company: "Turbotic",
+        logo: "/turbotic_logo.jpeg",
+        type: "Sponsored Post",
+        description: "Created a video showcasing their automation platform.",
+        impressions: 24300,
+        url: "https://www.linkedin.com/posts/sebasbimbi_nocode-turbotic-ai-activity-7408791306803519488-7CHA"
+    },
+    {
+        company: "Anthropic",
+        logo: "/anthropicresearch_logo.jpeg",
+        type: "Promoted Post",
+        description: "Showcasing free Claude for Business.",
+        impressions: 1500,
+        url: "https://www.linkedin.com/posts/sebasbimbi_i-cant-afford-these-tools-anymore-my-activity-7389536923419058176-5NQ9"
+    },
     {
         company: "Webflow",
         logo: "/webflow_inc__logo.jpeg",
@@ -139,6 +231,13 @@ const partnershipsData: Partnership[] = [
         impressions: 11809,
         url: "https://www.linkedin.com/posts/sebasbimbi_i-just-replaced-my-entire-content-team-with-activity-7370024460239937536-RVg3"
     },
+];
+
+const ambassadorData: AmbassadorRole[] = [
+    { company: "Webflow", logo: "/webflow_inc__logo.jpeg", year: "2023" },
+    { company: "Notion", logo: "/notionhq_logo.jpeg", year: "2025" },
+    { company: "Favikon", logo: "/favikon_logo.jpeg", year: "2025" },
+    { company: "Torc", logo: "/opentorc_logo.jpeg", year: "2025" }
 ];
 
 const packagesData: Package[] = [
@@ -220,8 +319,9 @@ export default function Home() {
                 <Founded />
                 <Lists title="Honors and Recognition" items={awardsData} id="awards" />
                 <Lists title="Selected Projects" items={projectsData} />
-                <Testimonials testimonials={testimonialsData} />
+                <Testimonials recommendations={testimonialsData} menteeTestimonials={menteeTestimonialsData} />
                 <Partnerships partnerships={partnershipsData} />
+                <Ambassador roles={ambassadorData} />
                 <WorkWithMe packages={packagesData} />
                 <Footer />
             </main>
