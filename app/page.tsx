@@ -55,7 +55,7 @@ const testimonialsData: Testimonial[] = [
     },
     {
         quote: "Sebastian was helpful in improving our site performance, taking our load time from over 13 seconds to under 2. He also took time to share useful tips for working more efficiently in Webflow with me, which I really appreciated!",
-        name: "Angela Petrie Blum",
+        name: "Angela Blum",
         role: "Director of Digital Marketing",
         company: "Weaver Fundraising"
     },
