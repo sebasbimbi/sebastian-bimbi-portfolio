@@ -6,6 +6,8 @@ const Header: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const headerRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLDivElement>(null);
+  const fullNameRef = useRef<HTMLSpanElement>(null);
+  const shortNameRef = useRef<HTMLSpanElement>(null);
   const ticking = useRef(false);
 
   useEffect(() => {
@@ -48,6 +50,17 @@ const Header: React.FC = () => {
 
       if (desc) {
         desc.style.opacity = Math.max(0, 1 - progress * 5).toString();
+      }
+
+      // Mobile: swap "Sebastian Bimbi" to "SB" as scroll progresses
+      if (isMobile && fullNameRef.current && shortNameRef.current) {
+        // Full name fades out from 0-50% progress
+        const fullNameOpacity = Math.max(0, 1 - progress * 2);
+        // Short name fades in from 30-80% progress
+        const shortNameOpacity = Math.min(1, Math.max(0, (progress - 0.3) * 2));
+
+        fullNameRef.current.style.opacity = fullNameOpacity.toString();
+        shortNameRef.current.style.opacity = shortNameOpacity.toString();
       }
 
       ticking.current = false;
@@ -102,7 +115,25 @@ const Header: React.FC = () => {
           letterSpacing: '-0.02em',
         }}
       >
-        Sebastian Bimbi
+        {isMobile ? (
+          <span className="relative inline-block">
+            <span
+              ref={fullNameRef}
+              style={{ transition: 'opacity 0.15s ease-out' }}
+            >
+              Sebastian Bimbi
+            </span>
+            <span
+              ref={shortNameRef}
+              className="absolute left-1/2 -translate-x-1/2 top-0"
+              style={{ opacity: 0, transition: 'opacity 0.15s ease-out' }}
+            >
+              SB
+            </span>
+          </span>
+        ) : (
+          'Sebastian Bimbi'
+        )}
       </h1>
     </>
   );
