@@ -8,7 +8,6 @@ import Partnerships, { Partnership } from '@/components/Partnerships';
 import WorkWithMe, { Package } from '@/components/WorkWithMe';
 import Ambassador, { AmbassadorRole } from "@/components/Ambassador";
 import Footer from '@/components/Footer';
-import AiAssistant from '@/components/AiAssistant';
 import { Award, Project } from '@/lib/types';
 
 const testimonialsData: Testimonial[] = [
@@ -336,7 +335,6 @@ export default function Home() {
                 <WorkWithMe packages={packagesData} />
                 <Footer />
             </main>
-            <AiAssistant />
         </div>
     );
 }
