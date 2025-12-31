@@ -110,6 +110,7 @@ const Lists: React.FC<ListProps> = ({ title, items, id }) => {
                   loop
                   muted
                   playsInline
+                  preload="none"
                   className="w-full h-full object-cover absolute top-0 left-0"
                 />
               ) : ('link' in hoveredItem && hoveredItem.link) ? (

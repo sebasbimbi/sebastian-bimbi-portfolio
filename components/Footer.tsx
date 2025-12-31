@@ -91,8 +91,8 @@ const Footer: React.FC = () => {
       <div className="w-full bg-black text-white pb-4 text-center overflow-hidden">
         <h1
           ref={titleRef}
-          className="leading-[0.8] uppercase tracking-tighter whitespace-nowrap"
-          style={{ fontFamily: "'Oswald', sans-serif", fontSize: '11vw' }}
+          className="font-oswald leading-[0.8] uppercase tracking-tighter whitespace-nowrap"
+          style={{ fontSize: '11vw' }}
         >
           {titleText.split('').map((char, index) => (
             <span

@@ -7,9 +7,9 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', 'sans-serif'],
-                display: ['Inter', 'sans-serif'],
-                oswald: ['Oswald', 'sans-serif'],
+                sans: ['var(--font-inter)', 'sans-serif'],
+                display: ['var(--font-inter)', 'sans-serif'],
+                oswald: ['var(--font-oswald)', 'sans-serif'],
             },
         },
     },

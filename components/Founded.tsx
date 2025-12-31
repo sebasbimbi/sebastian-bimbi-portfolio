@@ -20,19 +20,19 @@ const Founded: React.FC = () => {
     {
       name: "NOCODE.LAT",
       description: "Leading Community For\nNo-Code Enthusiasts",
-      image: "/nocodelat-bg.jpg",
+      image: "/images/nocodelat-bg.jpg",
       year: "2022"
     },
     {
       name: "SRC.MX",
       description: "Pooling House &\nSources of News",
-      image: "/statistical-research-corporation-bg.jpg",
+      image: "/images/statistical-research-corporation-bg.jpg",
       year: "2023"
     },
     {
       name: "BIMBI.DIGITAL",
       description: "Strategic Digital Growth\nAgency & Consultancy",
-      image: "/bimbi-digital-bg.jpg",
+      image: "/images/bimbi-digital-bg.jpg",
       year: "2025"
     }
   ];

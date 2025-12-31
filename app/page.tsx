@@ -10,6 +10,9 @@ import Ambassador, { AmbassadorRole } from "@/components/Ambassador";
 import Footer from '@/components/Footer';
 import { Award, Project } from '@/lib/types';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 const testimonialsData: Testimonial[] = [
     {
         quote: "I needed a few quick fixes on my webflow website, and Sebastian quickly fixed them and a few other minor things while he was added. Super flexible and easy to work with. Glad I found him :)",
@@ -144,7 +147,7 @@ const awardsData: Award[] = [
 const partnershipsData: Partnership[] = [
     {
         company: "Weglot",
-        logo: "/weglot_logo.jpeg",
+        logo: "/logos/weglot_logo.jpeg",
         posts: [
             {
                 type: "Sponsored Post",
@@ -164,7 +167,7 @@ const partnershipsData: Partnership[] = [
     },
     {
         company: "Notion",
-        logo: "/notionhq_logo.jpeg",
+        logo: "/logos/notionhq_logo.jpeg",
         posts: [
             {
                 type: "Content Creation",
@@ -177,7 +180,7 @@ const partnershipsData: Partnership[] = [
     },
     {
         company: "Anthropic",
-        logo: "/anthropicresearch_logo.jpeg",
+        logo: "/logos/anthropicresearch_logo.jpeg",
         posts: [
             {
                 type: "Promoted Post",
@@ -190,7 +193,7 @@ const partnershipsData: Partnership[] = [
     },
     {
         company: "Turbotic",
-        logo: "/turbotic_logo.jpeg",
+        logo: "/logos/turbotic_logo.jpeg",
         posts: [
             {
                 type: "Sponsored Post",
@@ -203,7 +206,7 @@ const partnershipsData: Partnership[] = [
     },
     {
         company: "Softr",
-        logo: "/softr_logo.jpeg",
+        logo: "/logos/softr_logo.jpeg",
         posts: [
             {
                 type: "Sponsored Post",
@@ -257,7 +260,7 @@ const partnershipsData: Partnership[] = [
     },
     {
         company: "Webflow",
-        logo: "/webflow_inc__logo.jpeg",
+        logo: "/logos/webflow_inc__logo.jpeg",
         posts: [
             {
                 type: "Sponsored Post",
@@ -285,10 +288,10 @@ const partnershipsData: Partnership[] = [
 ];
 
 const ambassadorData: AmbassadorRole[] = [
-    { company: "Webflow", logo: "/webflow_inc__logo.jpeg", year: "2023" },
-    { company: "Notion", logo: "/notionhq_logo.jpeg", year: "2025" },
-    { company: "Favikon", logo: "/favikon_logo.jpeg", year: "2025" },
-    { company: "Torc", logo: "/opentorc_logo.jpeg", year: "2025" }
+    { company: "Webflow", logo: "/logos/webflow_inc__logo.jpeg", year: "2023" },
+    { company: "Notion", logo: "/logos/notionhq_logo.jpeg", year: "2025" },
+    { company: "Favikon", logo: "/logos/favikon_logo.jpeg", year: "2025" },
+    { company: "Torc", logo: "/logos/opentorc_logo.jpeg", year: "2025" }
 ];
 
 const packagesData: Package[] = [
@@ -312,50 +315,50 @@ const projectsData: Project[] = [
         name: "DSU",
         slug: "dsu",
         category: "Ecom Courses",
-        video: "/dsu.mp4"
+        video: "/videos/dsu.mp4"
     },
     {
         name: "Kiba",
         slug: "kiba",
         category: "Digital Marketing",
-        video: "/kiba.mp4"
+        video: "/videos/kiba.mp4"
     },
     {
         name: "Phoenix of Gaza XR",
         slug: "phoenix-of-gaza-xr",
         category: "Interactive Dev",
-        video: "/gaza.mp4"
+        video: "/videos/gaza.mp4"
     },
     {
         name: "Zephyr-Cloud",
         slug: "zephyr-cloud",
         category: "SaaS",
         link: "https://zephyr-v1.webflow.io/",
-        video: "/zephyr.mp4"
+        video: "/videos/zephyr.mp4"
     },
     {
         name: "BCN Visuals",
         slug: "bcn-visuals",
         category: "3D Billboards",
-        video: "/bcnvisuals.mp4"
+        video: "/videos/bcnvisuals.mp4"
     },
     {
         name: "Jamboree",
         slug: "jamboree",
         category: "Fundraiser",
-        video: "/jamboree.mp4"
+        video: "/videos/jamboree.mp4"
     },
     {
         name: "Head2Core",
         slug: "head2core",
         category: "Non-profit",
-        video: "/head2core.mp4"
+        video: "/videos/head2core.mp4"
     },
     {
         name: "LiveTrained",
         slug: "livetrained",
         category: "Online Videos",
-        video: "/livetrained.mp4"
+        video: "/videos/livetrained.mp4"
     },
 
 ];

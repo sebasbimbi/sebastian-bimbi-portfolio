@@ -69,10 +69,8 @@ const Header: React.FC = () => {
 
       {/* Animated Brand Name / Logo */}
       <h1
-        className="fixed z-50 text-white mix-blend-difference text-center uppercase whitespace-nowrap w-full pointer-events-none"
+        className="fixed z-50 text-white mix-blend-difference text-center uppercase whitespace-nowrap w-full pointer-events-none font-oswald font-bold"
         style={{
-          fontFamily: "'Oswald', sans-serif",
-          fontWeight: 700,
           lineHeight: 0.85,
           // Interpolate Top Position
           // Start: Bottom of screen (startTopCalc)

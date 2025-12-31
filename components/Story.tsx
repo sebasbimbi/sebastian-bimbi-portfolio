@@ -53,21 +53,21 @@ const Story: React.FC = () => {
           became a{' '}
           <span
             className="relative inline-block cursor-none underline decoration-4 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
-            onMouseEnter={() => setActiveMemory("/wf-leader.jpeg")}
+            onMouseEnter={() => setActiveMemory("/images/wf-leader.jpeg")}
             onMouseLeave={() => setActiveMemory(null)}
           >
             Webflow Global Leader
           </span>,{' '}
           <span
             className="relative inline-block cursor-none underline decoration-4 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
-            onMouseEnter={() => setActiveMemory("/notion-leader.jpeg")}
+            onMouseEnter={() => setActiveMemory("/images/notion-leader.jpeg")}
             onMouseLeave={() => setActiveMemory(null)}
           >
             Notion Ambassador
           </span>, and won the{' '}
           <span
             className="relative inline-block cursor-none underline decoration-4 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
-            onMouseEnter={() => setActiveMemory("/wf-mvp.jpeg")}
+            onMouseEnter={() => setActiveMemory("/images/wf-mvp.jpeg")}
             onMouseLeave={() => setActiveMemory(null)}
           >
             Webflow Community MVP

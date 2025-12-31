@@ -1,10 +1,27 @@
 import type { Metadata } from 'next';
+import { Inter, Oswald } from 'next/font/google';
 import './globals.css';
+
+const inter = Inter({
+    subsets: ['latin'],
+    weight: ['400', '700', '900'],
+    variable: '--font-inter',
+    display: 'swap',
+});
+
+const oswald = Oswald({
+    subsets: ['latin'],
+    weight: ['500', '700'],
+    variable: '--font-oswald',
+    display: 'swap',
+});
 
 export const metadata: Metadata = {
     title: 'Sebastian Bimbi - Portfolio',
     description: 'Webflow Global Community Leader and Notion Ambassador. Strategic no-code development for growth-focused companies.',
 };
+
+export const revalidate = false;
 
 export default function RootLayout({
     children,
@@ -12,16 +29,8 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
-            <head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Oswald:wght@500;700&display=swap"
-                    rel="stylesheet"
-                />
-            </head>
-            <body className="bg-white text-black antialiased">
+        <html lang="en" className={`${inter.variable} ${oswald.variable}`}>
+            <body className="bg-white text-black antialiased font-sans">
                 {children}
             </body>
         </html>

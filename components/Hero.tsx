@@ -1,13 +1,18 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Hero: React.FC = () => {
   return (
     <header className="relative w-full h-screen overflow-hidden bg-gray-900">
       {/* Background Image */}
-      <img
-        src="/sb-speaking.png"
+      <Image
+        src="/images/sb-speaking.webp"
         alt="Sebastian Bimbi"
-        className="w-full h-full object-cover opacity-80"
+        fill
+        priority
+        quality={80}
+        sizes="100vw"
+        className="object-cover opacity-80"
       />
 
       {/* Overlay Gradient for text readability */}
