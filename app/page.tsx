@@ -149,6 +149,7 @@ const partnershipsData: Partnership[] = [
         type: "Sponsored Post",
         description: "Created a video showcasing their automation platform.",
         impressions: 24300,
+        likes: 100,
         url: "https://www.linkedin.com/posts/sebasbimbi_nocode-turbotic-ai-activity-7408791306803519488-7CHA"
     },
     {
@@ -157,6 +158,7 @@ const partnershipsData: Partnership[] = [
         type: "Promoted Post",
         description: "Showcasing free Claude for Business.",
         impressions: 1500,
+        likes: 60,
         url: "https://www.linkedin.com/posts/sebasbimbi_i-cant-afford-these-tools-anymore-my-activity-7389536923419058176-5NQ9"
     },
     {
@@ -165,6 +167,7 @@ const partnershipsData: Partnership[] = [
         type: "Sponsored Post",
         description: "Created a carousel post about 'Webflow Frameworks'.",
         impressions: 13600,
+        likes: 230,
         url: "https://www.linkedin.com/posts/webflow-inc-_webflow-frameworks-activity-7163547515496087553-xm-x"
     },
     {
@@ -173,6 +176,7 @@ const partnershipsData: Partnership[] = [
         type: "Sponsored Post",
         description: "Created a carousel post about 'How to become a Webflow Pro from Scratch'.",
         impressions: 8440,
+        likes: 170,
         url: "https://www.linkedin.com/posts/webflow-inc-_webflow-pro-activity-7131349370511208448-L5pc"
     },
     {
@@ -181,6 +185,7 @@ const partnershipsData: Partnership[] = [
         type: "Promoted Post",
         description: "Won Webflow Awards - Community MVP 2025.",
         impressions: 19880,
+        likes: 310,
         url: "https://www.linkedin.com/posts/webflow-inc-_the-votes-are-in-activity-7373385165777268737-g5od"
     },
     {
@@ -189,6 +194,7 @@ const partnershipsData: Partnership[] = [
         type: "Sponsored Post",
         description: "Showcasing 'Ask Softr AI' campaign.",
         impressions: 1728,
+        likes: 60,
         url: "https://www.linkedin.com/posts/sebasbimbi_asksoftrai-nocode-activity-7356575128832372736-butW"
     },
     {
@@ -197,6 +203,7 @@ const partnershipsData: Partnership[] = [
         type: "Sponsored Post",
         description: "Showcasing 'Softr Databases' campaign.",
         impressions: 5682,
+        likes: 90,
         url: "https://www.linkedin.com/posts/sebasbimbi_softrdatabases-nocode-activity-7341050868961619968-WfvS"
     },
     {
@@ -205,6 +212,7 @@ const partnershipsData: Partnership[] = [
         type: "Sponsored Post",
         description: "Showcasing 'Softr AI Agents' campaign.",
         impressions: 2439,
+        likes: 50,
         url: "https://www.linkedin.com/posts/sebasbimbi_softraiagents-activity-7379088404426227712-xGwE"
     },
     {
@@ -213,6 +221,7 @@ const partnershipsData: Partnership[] = [
         type: "Sponsored Post",
         description: "Sponsored post sharing discount codes to the people who engaged.",
         impressions: 1900,
+        likes: 50,
         url: "https://www.linkedin.com/posts/sebasbimbi_want-to-see-how-i-implement-website-translations-activity-7256903844125724673-lc7G"
     },
     {
@@ -221,6 +230,7 @@ const partnershipsData: Partnership[] = [
         type: "Content Creation",
         description: "How to quick install Weglot into Webflow.",
         impressions: 1830,
+        likes: 35,
         url: "https://www.linkedin.com/posts/sebasbimbi_heres-how-i-supercharged-a-clients-global-activity-7253649894555488256-JV0R"
     },
     {
@@ -229,6 +239,7 @@ const partnershipsData: Partnership[] = [
         type: "Content Creation",
         description: "Showcasing 'Notion AI Agent'.",
         impressions: 11809,
+        likes: 110,
         url: "https://www.linkedin.com/posts/sebasbimbi_i-just-replaced-my-entire-content-team-with-activity-7370024460239937536-RVg3"
     },
 ];
