@@ -15,7 +15,8 @@ const Story: React.FC = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Position image on opposite side of cursor for better visibility
+  const isMobile = windowWidth < 768;
+  // Position image on opposite side of cursor for better visibility (desktop only)
   const isLeftSide = mousePos.x < windowWidth / 2;
   const imageOffset = isLeftSide ? 40 : -320; // 320 = image width + padding
 
@@ -26,7 +27,11 @@ const Story: React.FC = () => {
       {activeMemory && (
         <div
           className="fixed z-50 pointer-events-none"
-          style={{
+          style={isMobile ? {
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+          } : {
             left: mousePos.x + imageOffset,
             top: mousePos.y - 120,
             transition: 'left 0.15s ease-out, top 0.15s ease-out',
@@ -34,12 +39,12 @@ const Story: React.FC = () => {
         >
           <div
             className="bg-white p-3 border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
-            style={{ transform: isLeftSide ? 'rotate(2deg)' : 'rotate(-2deg)' }}
+            style={{ transform: isMobile ? 'rotate(-2deg)' : (isLeftSide ? 'rotate(2deg)' : 'rotate(-2deg)') }}
           >
             <img
               src={activeMemory}
               alt="Memory"
-              className="w-64 h-48 object-cover border border-black grayscale contrast-125"
+              className="w-48 h-36 md:w-64 md:h-48 object-cover border border-black grayscale contrast-125"
             />
             <div className="mt-2 text-center font-bold text-xs uppercase tracking-widest">
               {activeMemory.includes('wf-leader') ? '2023' : activeMemory.includes('notion-leader') ? '2025' : activeMemory.includes('wf-mvp') ? '2025' : ''}
@@ -54,26 +59,26 @@ const Story: React.FC = () => {
         </div>
       </div>
 
-      <div className="max-w-5xl text-center relative z-10">
-        <p className="text-xl md:text-3xl lg:text-4xl leading-relaxed md:leading-relaxed tracking-normal">
+      <div className="max-w-6xl text-center relative z-10">
+        <p className="font-display text-2xl md:text-5xl lg:text-6xl uppercase leading-[1.15] md:leading-[1.1] tracking-tight">
           Started as a struggling graduate, discovered No-Code, posted daily on LinkedIn,
           became a{' '}
           <span
-            className="relative inline-block cursor-none font-bold underline decoration-2 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
+            className="relative inline-block cursor-none underline decoration-4 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
             onMouseEnter={() => setActiveMemory("/images/wf-leader.jpeg")}
             onMouseLeave={() => setActiveMemory(null)}
           >
             Webflow Global Leader
           </span>,{' '}
           <span
-            className="relative inline-block cursor-none font-bold underline decoration-2 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
+            className="relative inline-block cursor-none underline decoration-4 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
             onMouseEnter={() => setActiveMemory("/images/notion-leader.jpeg")}
             onMouseLeave={() => setActiveMemory(null)}
           >
             Notion Ambassador
           </span>, and won the{' '}
           <span
-            className="relative inline-block cursor-none font-bold underline decoration-2 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
+            className="relative inline-block cursor-none underline decoration-4 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
             onMouseEnter={() => setActiveMemory("/images/wf-mvp.jpeg")}
             onMouseLeave={() => setActiveMemory(null)}
           >
