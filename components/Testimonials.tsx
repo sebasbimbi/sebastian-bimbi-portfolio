@@ -60,11 +60,13 @@ const Testimonials: React.FC<TestimonialsProps> = ({ recommendations, menteeTest
                         onMouseEnter={() => setHoveredIndex(idx)}
                         onMouseLeave={() => setHoveredIndex(null)}
                         className={`
-              group relative border-2 border-black p-6 transition-all duration-300 flex flex-col justify-between h-full opacity-0
-              ${hoveredIndex === idx ? 'bg-black text-white' : 'bg-white text-black'}
-              ${hoveredIndex !== null && hoveredIndex !== idx ? 'opacity-50' : 'opacity-100'}
-              hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]
+              group relative border-2 border-black p-6 flex flex-col justify-between h-full
+              ${hoveredIndex === idx ? 'bg-black text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]' : 'bg-white text-black'}
             `}
+                        style={{
+                            opacity: hoveredIndex !== null && hoveredIndex !== idx ? 0.5 : 1,
+                            transition: 'background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
                     >
                         {/* Quote Icon */}
                         <div className={`text-4xl md:text-5xl font-display leading-none mb-4 transition-colors ${hoveredIndex === idx ? 'text-white' : 'text-black'}`}>

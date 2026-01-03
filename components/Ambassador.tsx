@@ -33,10 +33,13 @@ const Ambassador: React.FC<AmbassadorProps> = ({ roles }) => {
                         onMouseEnter={() => setHoveredIndex(idx)}
                         onMouseLeave={() => setHoveredIndex(null)}
                         className={`
-              group relative border-2 border-black p-8 transition-colors duration-300 flex flex-col items-center justify-center aspect-square md:aspect-auto md:h-64
-              ${hoveredIndex === idx ? 'bg-black text-white' : 'bg-white text-black'}
-              hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]
+              group relative border-2 border-black p-8 flex flex-col items-center justify-center aspect-square md:aspect-auto md:h-64
+              ${hoveredIndex === idx ? 'bg-black text-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]' : 'bg-white text-black'}
             `}
+                        style={{
+                            opacity: hoveredIndex !== null && hoveredIndex !== idx ? 0.5 : 1,
+                            transition: 'background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
                     >
                         {/* Logo */}
                         <div className={`relative w-24 h-24 mb-6 flex items-center justify-center overflow-hidden rounded-xl ${hoveredIndex === idx ? 'bg-white' : 'bg-gray-100'}`}>

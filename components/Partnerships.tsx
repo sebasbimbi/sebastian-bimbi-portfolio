@@ -98,11 +98,13 @@ const Partnerships: React.FC<PartnershipsProps> = ({ partnerships }) => {
                             onMouseLeave={() => setHoveredIndex(null)}
                             className={`
                                 w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.667rem)]
-                                group relative border-2 border-white p-6 transition-all duration-300 cursor-pointer flex flex-col
-                                ${isHovered ? 'bg-white text-black' : 'bg-black text-white'}
-                                ${hoveredIndex !== null && !isHovered ? 'opacity-50' : 'opacity-100'}
-                                hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.3)]
+                                group relative border-2 border-white p-6 cursor-pointer flex flex-col
+                                ${isHovered ? 'bg-white text-black shadow-[8px_8px_0px_0px_rgba(255,255,255,0.3)]' : 'bg-black text-white'}
                             `}
+                            style={{
+                                opacity: hoveredIndex !== null && !isHovered ? 0.5 : 1,
+                                transition: 'background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
+                            }}
                             onClick={() => setSelectedPartnership(partnership)}
                         >
                             {/* Logo */}

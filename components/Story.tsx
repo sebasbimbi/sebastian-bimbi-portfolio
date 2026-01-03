@@ -44,7 +44,7 @@ const Story: React.FC = () => {
             <img
               src={activeMemory}
               alt="Memory"
-              className="w-48 h-36 md:w-64 md:h-48 object-cover border border-black grayscale contrast-125"
+              className="w-48 h-36 md:w-64 md:h-48 object-cover border border-black"
             />
             <div className="mt-2 text-center font-bold text-xs uppercase tracking-widest">
               {activeMemory.includes('wf-leader') ? '2023' : activeMemory.includes('notion-leader') ? '2025' : activeMemory.includes('wf-mvp') ? '2025' : ''}
