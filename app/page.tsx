@@ -288,10 +288,10 @@ const partnershipsData: Partnership[] = [
 ];
 
 const ambassadorData: AmbassadorRole[] = [
-    { company: "Webflow", logo: "/logos/webflow_inc__logo.jpeg", year: "2023" },
-    { company: "Notion", logo: "/logos/notionhq_logo.jpeg", year: "2025" },
-    { company: "Favikon", logo: "/logos/favikon_logo.jpeg", year: "2025" },
-    { company: "Torc", logo: "/logos/opentorc_logo.jpeg", year: "2025" }
+    { company: "Webflow", logo: "/logos/webflow_inc__logo.jpeg", year: "May 2023" },
+    { company: "Notion", logo: "/logos/notionhq_logo.jpeg", year: "April 2025" },
+    { company: "Favikon", logo: "/logos/favikon_logo.jpeg", year: "Nov 2025" },
+    { company: "Torc", logo: "/logos/opentorc_logo.jpeg", year: "Dec 2025" }
 ];
 
 const packagesData: Package[] = [
