@@ -34,3 +34,22 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Lists component animations */
+@keyframes scroll-vertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(calc(-100% + 200px)); }
+}
+
+.animate-scroll-vertical {
+  animation: scroll-vertical 8s linear infinite alternate;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}

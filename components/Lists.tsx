@@ -23,24 +23,6 @@ const Lists: React.FC<ListProps> = ({ title, items, id }) => {
 
   return (
     <section id={id} className="w-full bg-white text-black py-12 md:py-20 px-4 md:px-8 relative">
-      <style>
-        {`
-          @keyframes scroll-vertical {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(calc(-100% + 200px)); }
-          }
-          .animate-scroll-vertical {
-            animation: scroll-vertical 8s linear infinite alternate;
-          }
-          @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          .animate-spin-slow {
-            animation: spin-slow 8s linear infinite;
-          }
-        `}
-      </style>
 
       {/* Floating Website Preview */}
       {showPopup && (
@@ -69,7 +51,8 @@ const Lists: React.FC<ListProps> = ({ title, items, id }) => {
                   loop
                   muted
                   playsInline
-                  preload="none"
+                  preload="metadata"
+                  disablePictureInPicture
                   className="w-full h-full object-cover absolute top-0 left-0"
                 />
               ) : ('link' in hoveredItem && hoveredItem.link) ? (

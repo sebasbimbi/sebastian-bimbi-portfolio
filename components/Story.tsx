@@ -47,7 +47,7 @@ const Story: React.FC = () => {
               className="w-48 h-36 md:w-64 md:h-48 object-cover border border-black"
             />
             <div className="mt-2 text-center font-bold text-xs uppercase tracking-widest">
-              {activeMemory.includes('wf-leader') ? '2023' : activeMemory.includes('notion-leader') ? '2025' : activeMemory.includes('wf-mvp') ? '2025' : ''}
+              {activeMemory.includes('wf-leader') ? '2023' : activeMemory.includes('notion') ? '2025' : activeMemory.includes('mvp') ? '2025' : ''}
             </div>
           </div>
         </div>
@@ -65,21 +65,21 @@ const Story: React.FC = () => {
           became a{' '}
           <span
             className="relative inline-block cursor-none underline decoration-4 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
-            onMouseEnter={() => setActiveMemory("/images/wf-leader.jpeg")}
+            onMouseEnter={() => setActiveMemory("/images/wf-leader.webp")}
             onMouseLeave={() => setActiveMemory(null)}
           >
             Webflow Global Leader
           </span>,{' '}
           <span
             className="relative inline-block cursor-none underline decoration-4 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
-            onMouseEnter={() => setActiveMemory("/images/notion-leader.jpeg")}
+            onMouseEnter={() => setActiveMemory("/images/notion-leader.webp")}
             onMouseLeave={() => setActiveMemory(null)}
           >
             Notion Ambassador
           </span>, and won the{' '}
           <span
             className="relative inline-block cursor-none underline decoration-4 underline-offset-4 hover:bg-black hover:text-white transition-colors px-1"
-            onMouseEnter={() => setActiveMemory("/images/wf-mvp.jpeg")}
+            onMouseEnter={() => setActiveMemory("/images/wf-mvp.webp")}
             onMouseLeave={() => setActiveMemory(null)}
           >
             Webflow Community MVP
